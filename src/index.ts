@@ -1,9 +1,14 @@
 import app from './app'
 import { BookmarksInterface, bookmarksSchema } from './schemas/bookmarks'
-import { LoginInterface, loginSchema } from "./schemas/login"
+import { LoginInterface, loginSchema } from './schemas/login'
 import { get, put } from './routes/bookmarks'
 import login from './routes/login'
 import auth from './util/auth'
+import cors from 'fastify-cors'
+
+app.register(cors, {
+  origin: '*'
+})
 
 app.get('/', (_, res) => {
   res.send({
@@ -12,9 +17,17 @@ app.get('/', (_, res) => {
   })
 })
 
-app.post<{ Body: LoginInterface }>('/login', { schema: { body: loginSchema }, preValidation: auth }, login)
+app.post<{ Body: LoginInterface }>(
+  '/login',
+  { schema: { body: loginSchema }, preValidation: auth },
+  login
+)
 
 app.get('/bookmarks', { preValidation: auth }, get)
-app.put<{ Body: BookmarksInterface }>('/bookmarks', { schema: { body: bookmarksSchema }, preValidation: auth }, put)
+app.put<{ Body: BookmarksInterface }>(
+  '/bookmarks',
+  { schema: { body: bookmarksSchema }, preValidation: auth },
+  put
+)
 
 app.listen(3000, '0.0.0.0')

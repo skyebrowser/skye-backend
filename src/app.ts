@@ -19,7 +19,7 @@ app.decorateRequest('user', null)
 
 declare module 'fastify' {
   export interface FastifyRequest {
-    user: User | null;
+    user: User | null
   }
 }
 
