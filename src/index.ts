@@ -19,7 +19,7 @@ app.get('/', (_, res) => {
 
 app.post<{ Body: LoginInterface }>(
   '/login',
-  { schema: { body: loginSchema }, preValidation: auth },
+  { schema: { body: loginSchema } },
   login
 )
 
