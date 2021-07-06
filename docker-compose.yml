@@ -5,7 +5,7 @@ services:
     environment:
       - DATABASE_URL_FILE=/run/secrets/skye_database_url
       - JWT_KEY_FILE=/run/secrets/skye_jwt_key
-      - FEDERAION_KEY_FILE=/run/secrets/skye_federation_key
+      - FEDERATION_KEY_FILE=/run/secrets/skye_federation_key
     ports:
       - '3006:3000'
     secrets:
