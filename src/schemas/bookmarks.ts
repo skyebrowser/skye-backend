@@ -2,15 +2,15 @@ import { z } from 'zod'
 
 export const bookmarksSchema = z.array(
   z.object({
-    _id: z.string().optional(),
-    title: z.string().optional(),
-    url: z.string().optional(),
-    favicon: z.string().optional(),
-    hovered: z.boolean().optional(),
-    isFolder: z.boolean().optional(),
-    parent: z.string().optional(),
-    order: z.number().optional(),
-    expanded: z.boolean().optional(),
+    _id: z.string().optional().nullable(),
+    title: z.string().optional().nullable(),
+    url: z.string().optional().nullable(),
+    favicon: z.string().optional().nullable(),
+    hovered: z.boolean().optional().nullable(),
+    isFolder: z.boolean().optional().nullable(),
+    parent: z.string().optional().nullable(),
+    order: z.number().optional().nullable(),
+    expanded: z.boolean().optional().nullable(),
     static: z
       .union([
         z.literal('mobile'),
@@ -18,8 +18,9 @@ export const bookmarksSchema = z.array(
         z.literal('other'),
         z.literal('pinned')
       ])
-      .optional(),
-    children: z.array(z.string()).optional()
+      .optional()
+      .nullable(),
+    children: z.array(z.string()).optional().nullable()
   })
 )
 
