@@ -1,6 +1,6 @@
 version: '3.8'
 services:
-  template:
+  backend:
     image: ghcr.io/innatical/skye-backend:main
     environment:
       - DATABASE_URL_FILE=/run/secrets/skye_database_url
