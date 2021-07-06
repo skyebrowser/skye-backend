@@ -1,13 +1,21 @@
 version: '3.8'
 services:
   template:
-    image:
+    image: ghcr.io/innatical/skye-backend:main
     environment:
-      - DATABASE_URL_FILE=/run/secrets/database_url
+      - DATABASE_URL_FILE=/run/secrets/skye_database_url
+      - JWT_KEY_FILE=/run/secrets/skye_jwt_key
+      - FEDERAION_KEY_FILE=/run/secrets/skye_federation_key
     ports:
-      - '3001:3000'
+      - '3006:3000'
     secrets:
-      - database_url
+      - skye_database_url
+      - skye_jwt_key
+      - skye_federation_key
 secrets:
-  database_url:
-    file: ./secrets/database_url
+  skye_database_url:
+    external: true
+  skye_jwt_key:
+    external: true
+  skye_federation_key:
+    external: true
