@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  template:
+    image:
+    environment:
+      - DATABASE_URL_FILE=/run/secrets/database_url
+    ports:
+      - '3001:3000'
+    secrets:
+      - database_url
+secrets:
+  database_url:
+    file: ./secrets/database_url
