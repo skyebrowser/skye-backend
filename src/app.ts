@@ -1,3 +1,4 @@
+import { User } from '@prisma/client'
 import Fastify from 'fastify'
 import { z } from 'zod'
 
@@ -13,5 +14,13 @@ app.setValidatorCompiler<z.AnyZodObject>(({ schema }) => {
     }
   }
 })
+
+app.decorateRequest('user', null)
+
+declare module 'fastify' {
+  export interface FastifyRequest {
+    user: User | null;
+  }
+}
 
 export default app
