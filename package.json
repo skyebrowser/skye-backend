@@ -16,6 +16,7 @@
     "start": "ts-node src/index.ts"
   },
   "dependencies": {
+    "@innatical/innatical-id-sdk": "^1.0.3",
     "@prisma/client": "^2.23.0",
     "@types/jsonwebtoken": "^8.5.3",
     "fastify": "^3.17.0",

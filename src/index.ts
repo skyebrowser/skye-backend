@@ -1,8 +1,6 @@
 import app from './app'
 import { BookmarksInterface, bookmarksSchema } from './schemas/bookmarks'
-import { LoginInterface, loginSchema } from './schemas/login'
 import { get, put } from './routes/bookmarks'
-import login from './routes/login'
 import auth from './util/auth'
 import cors from 'fastify-cors'
 
@@ -16,12 +14,6 @@ app.get('/', (_, res) => {
     ver: 1.0
   })
 })
-
-app.post<{ Body: LoginInterface }>(
-  '/login',
-  { schema: { body: loginSchema } },
-  login
-)
 
 app.get('/bookmarks', { preValidation: auth }, get)
 app.put<{ Body: BookmarksInterface }>(
